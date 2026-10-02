@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>匿名投票</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section id="createPage" class="card">
+      <h1>创建匿名投票</h1>
+      <p class="muted">填写问题和选项，生成一个独立的投票链接。</p>
+
+      <label class="field-label" for="question">投票问题</label>
+      <textarea id="question" maxlength="500" placeholder="例如：你最喜欢哪个角色？"></textarea>
+
+      <div class="options-title">
+        <label class="field-label">投票选项</label>
+        <span class="muted">至少 2 个，最多 20 个</span>
+      </div>
+
+      <div id="optionInputs"></div>
+
+      <button id="addOption" class="secondary" type="button">＋ 添加选项</button>
+      <button id="createPoll" type="button">生成投票链接</button>
+
+      <div id="createError" class="error"></div>
+
+      <div id="createdBox" class="success-box hidden">
+        <h2>投票已创建</h2>
+        <p>把下面这个链接发给别人即可：</p>
+        <div class="link-row">
+          <input id="pollLink" readonly>
+          <button id="copyLink" class="secondary small" type="button">复制</button>
+        </div>
+        <a id="openPoll" class="open-link" target="_blank" rel="noopener">打开投票</a>
+      </div>
+    </section>
+
+    <section id="pollPage" class="card hidden">
+      <h1 id="pollQuestion"></h1>
+      <p id="pollHint" class="muted">请选择一个选项</p>
+
+      <form id="pollForm">
+        <div id="pollOptions"></div>
+        <button id="voteButton" type="submit">提交投票</button>
+      </form>
+
+      <div id="voteError" class="error"></div>
+
+      <section id="results" class="results hidden">
+        <div class="divider"></div>
+        <h2>投票结果</h2>
+        <p id="totalVotes" class="muted"></p>
+        <div id="resultList"></div>
+      </section>
+    </section>
+
+    <p id="loading" class="loading hidden">正在加载……</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
